@@ -1,0 +1,21 @@
+---
+# tasks file for selinux
+
+- name: Configuration de SELinux to enforcing
+  selinux:
+    policy: targeted
+    state: enforcing
+  when: selinux_mode == "enforcing"
+
+- name: Configuration de SELinux to permissive
+  selinux:
+    policy: targeted
+    state: permissive
+  when: selinux_mode == "permissive"
+
+- name: Configuration de SELinux to disabled
+  selinux:
+    state: disabled
+  when: selinux_mode == "no"
+
+...
